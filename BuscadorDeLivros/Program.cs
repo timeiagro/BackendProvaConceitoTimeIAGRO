@@ -1,3 +1,7 @@
+using BuscadorDeLivros.Repositories;
+using BuscadorDeLivros.Repository;
+using BuscadorDeLivros.Services;
+
 namespace BuscadorDeLivros
 {
     public class Program
@@ -7,6 +11,8 @@ namespace BuscadorDeLivros
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddScoped<IBookRepository, BookRepository>();
+            builder.Services.AddScoped<IFreteService, FreteService>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
