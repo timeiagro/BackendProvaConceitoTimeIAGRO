@@ -32,3 +32,4 @@ C:\Users\julia\Documents\miltec\BackendProvaConceitoTimeIAGRO\WebLivro\WebLivro\
 C:\Users\julia\Documents\miltec\BackendProvaConceitoTimeIAGRO\WebLivro\WebLivro\obj\Debug\net8.0\WebLivro.genruntimeconfig.cache
 C:\Users\julia\Documents\miltec\BackendProvaConceitoTimeIAGRO\WebLivro\WebLivro\obj\Debug\net8.0\ref\WebLivro.dll
 C:\Users\julia\Documents\miltec\BackendProvaConceitoTimeIAGRO\WebLivro\WebLivro\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\julia\Documents\miltec\BackendProvaConceitoTimeIAGRO\WebLivro\WebLivro\bin\Debug\net8.0\books.json

@@ -110,3 +110,4 @@ C:\Users\julia\Documents\miltec\BackendProvaConceitoTimeIAGRO\WebLivro\WebLivroT
 C:\Users\julia\Documents\miltec\BackendProvaConceitoTimeIAGRO\WebLivro\WebLivroTest\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\julia\Documents\miltec\BackendProvaConceitoTimeIAGRO\WebLivro\WebLivroTest\bin\Debug\net8.0\WebLivro.dll
 C:\Users\julia\Documents\miltec\BackendProvaConceitoTimeIAGRO\WebLivro\WebLivroTest\bin\Debug\net8.0\WebLivro.pdb
+C:\Users\julia\Documents\miltec\BackendProvaConceitoTimeIAGRO\WebLivro\WebLivroTest\bin\Debug\net8.0\books.json

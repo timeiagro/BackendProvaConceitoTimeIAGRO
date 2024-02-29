@@ -17,7 +17,7 @@ namespace WebLivros.Services
         }
         private List<Book> DeserializarJson()
         {
-            StreamReader r = new StreamReader("C:\\Users\\julia\\Documents\\miltec\\BackendProvaConceitoTimeIAGRO\\books.json");
+            StreamReader r = new StreamReader("books.json");
             string jsonString = r.ReadToEnd();
             var m = JsonConvert.DeserializeObject<IEnumerable<Book>>(jsonString);
 

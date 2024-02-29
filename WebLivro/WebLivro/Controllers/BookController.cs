@@ -30,7 +30,16 @@ namespace WebLivro.Controllers
         {            
             return bookService.GetByName(name);
         }
-
+        [HttpGet("illustrator/{name}")]
+        public List<Book> GetByIllustrator(string name)
+        {
+            return bookService.GetByIllustrator(name);
+        }
+        [HttpGet("genere/{name}")]
+        public List<Book> GetByGenres(string name)
+        {
+            return bookService.GetByGenres(name);
+        }
         [HttpGet("autor/{name}")]
         public List<Book> GetByAuthor(string name)
         {
