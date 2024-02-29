@@ -18,3 +18,7 @@ Para nos enviar o código, crie um fork desse repositório e quando finalizar, m
 O projeto deve ser desenvolvido em C#, utilizando o .NET Core 3.1 ou superior.
 
 Gostaríamos que fosse evitado a utilização de frameworks, e que tivesse uma explicação do que é necessário para funcionar o projeto e os testes.
+
+# Execução
+
+Para executar o projeto  utilize o visual studio, Rider ou qualquer outra IDE e o Dotnet 8 
