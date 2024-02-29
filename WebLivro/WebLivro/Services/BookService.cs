@@ -47,11 +47,61 @@ namespace WebLivros.Services
             return jArray.ToObject<string[]>();
         }
 
-        public List<Book> GetByProperty(string parametros)
+        public List<Book> GetByIllustrator(string parametros)
         {
             List<Book> result = GetBooks();
-            List<Book> query = result.Where(res => res.specifications.Illustrator.ToString().Contains(parametros)).ToList();
-            return query;
+
+            HashSet<Book> list = new HashSet<Book>();
+
+            foreach (var item in result)
+            {
+                if (item.specifications.Illustrator.ToString().ToLower().Contains(parametros.ToLower()))
+                {
+                    list.Add(item);
+                }
+
+                if (item.specifications.Illustrator is Array)
+                {
+
+                    foreach (var indice in (Array) item.specifications.Illustrator)
+                    {
+                        if (indice.ToString().ToLower().Contains(parametros.ToLower()))
+                        {
+                            list.Add(item);
+                        }
+                    }
+                }
+            }
+            return list.ToList();
+        }
+
+
+        public List<Book> GetByGenres(string parametros)
+        {
+            List<Book> result = GetBooks();
+
+            HashSet<Book> list = new HashSet<Book>();
+
+            foreach (var item in result)
+            {
+                if (item.specifications.Genres.ToString().ToLower().Contains(parametros.ToLower()))
+                {
+                    list.Add(item);
+                }
+
+                if (item.specifications.Genres is Array)
+                {
+
+                    foreach (var indice in (Array)item.specifications.Genres)
+                    {
+                        if (indice.ToString().ToLower().Contains(parametros.ToLower()))
+                        {
+                            list.Add(item);
+                        }
+                    }
+                }
+            }
+            return list.ToList();
         }
 
         public List<Book> GetByName(string name)

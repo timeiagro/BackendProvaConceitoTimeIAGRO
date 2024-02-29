@@ -24,12 +24,7 @@ namespace WebLivro.Controllers
             return bookService.GetBooks();
         }
 
-        [HttpGet("{parametro}")]
-        public List<Book> GetByProperty(string parametro)
-        {
-            return bookService.GetByProperty(parametro);
-        }
-
+     
         [HttpGet("nome/{name}")]
         public List<Book> GetByName(string name)
         {            
