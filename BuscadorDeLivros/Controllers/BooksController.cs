@@ -59,12 +59,13 @@ namespace BuscadorDeLivros.Controllers
             }
             catch (Exception)
             {
+                /// log
                 return StatusCode(500, "Ocorreu um erro no sistema.");
             }
-        }
+        } 
 
         [HttpGet("Frete/{bookId}")]
-        public ActionResult<Book> CalcularFrete(int bookId)
+        public ActionResult<Shipping> CalcularFrete(int bookId)
         {
             try
             {
@@ -82,6 +83,7 @@ namespace BuscadorDeLivros.Controllers
             }
             catch (Exception)
             {
+                /// log
                 return StatusCode(500, "Ocorreu um erro no sistema.");
             }
         }
