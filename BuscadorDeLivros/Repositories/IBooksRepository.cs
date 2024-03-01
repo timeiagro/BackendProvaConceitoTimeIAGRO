@@ -2,9 +2,9 @@
 
 namespace BuscadorDeLivros.Repositories
 {
-    public interface IBookRepository
+    public interface IBooksRepository
     {
         public List<Book>? BuscarTodos();
-        public Book BuscarPorId(int id);
+        public Book? BuscarPorId(int id);
     }
 }

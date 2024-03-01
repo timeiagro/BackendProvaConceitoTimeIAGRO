@@ -11,7 +11,7 @@ namespace BuscadorDeLivros
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddScoped<IBookRepository, BookRepository>();
+            builder.Services.AddScoped<IBooksRepository, BooksRepository>();
             builder.Services.AddScoped<IFreteService, FreteService>();
 
             builder.Services.AddControllers();

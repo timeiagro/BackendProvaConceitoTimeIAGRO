@@ -4,16 +4,21 @@ using Newtonsoft.Json;
 
 namespace BuscadorDeLivros.Repository
 {
-    public class BookRepository : IBookRepository
+    public class BooksRepository : IBooksRepository
     {
+        private readonly string _booksFilePath;
+        
+        public BooksRepository() {
+            var execututionDirectory = AppContext.BaseDirectory;
+            var directoryProject = Path.GetFullPath(Path.Combine(execututionDirectory, @"..\..\..\.."));
+            _booksFilePath = Path.Combine(directoryProject, "books.json");
+        }
+
         public List<Book>? BuscarTodos()
         {
             try
             {
-                var execututionDirectory = AppContext.BaseDirectory;
-                var directoryProject = Path.GetFullPath(Path.Combine(execututionDirectory, @"..\..\..\.."));
-                var filePath = Path.Combine(directoryProject, "books.json");
-                using StreamReader reader = new StreamReader(filePath);
+                using StreamReader reader = new StreamReader(_booksFilePath);
                 string jsonContent = reader.ReadToEnd();
                 var books = JsonConvert.DeserializeObject<List<Book>>(jsonContent);
                 return books;

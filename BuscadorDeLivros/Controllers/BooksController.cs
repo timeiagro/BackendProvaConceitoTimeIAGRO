@@ -9,26 +9,27 @@ namespace BuscadorDeLivros.Controllers
     [ApiController]
     public class BooksController : ControllerBase
     {
-        private readonly IBookRepository _bookRepository;
+        private readonly IBooksRepository _bookRepository;
         private readonly IFreteService _freteService;
 
-        public BooksController(IBookRepository bookRepository, IFreteService freteService)
+        public BooksController(IBooksRepository bookRepository, IFreteService freteService)
         {
             _bookRepository = bookRepository;
             _freteService = freteService;
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Book>>? Get(
+        public ActionResult<IEnumerable<Book>> Buscar(
             [FromQuery] string? nome,
             [FromQuery] decimal? preco,
             [FromQuery] string? genero,
-            [FromQuery] string? orderByPrice)
+            [FromQuery] string? ordenarPorPreco)
         {
             try
             {
                 var books = _bookRepository.BuscarTodos();
-                if (books is null) return Ok(new List<Book>());
+                if (books is null) 
+                    return Ok(new List<Book>());
 
                 if (!string.IsNullOrWhiteSpace(nome))
                     books = books.Where(b => b.Name.Contains(nome, StringComparison.OrdinalIgnoreCase)).ToList();
@@ -41,17 +42,17 @@ namespace BuscadorDeLivros.Controllers
                         (b.Specifications.Genres is string &&
                             b.Specifications.Genres.Contains(genero, StringComparison.OrdinalIgnoreCase)) ||
                         (b.Specifications.Genres is IEnumerable<string> arr &&
-                            arr.Any(g => g.Contains(genero, StringComparison.Ordinal)))
+                            arr.Any(g => g.Contains(genero, StringComparison.OrdinalIgnoreCase)))
                     ).ToList();
 
-                if (!string.IsNullOrWhiteSpace(orderByPrice))
+                if (!string.IsNullOrWhiteSpace(ordenarPorPreco))
                 {
-                    if (orderByPrice == "asc")
+                    if (ordenarPorPreco == "asc")
                         books = books.OrderBy(b => b.Price).ToList();
-                    else if (orderByPrice == "desc")
+                    else if (ordenarPorPreco == "desc")
                         books = books.OrderByDescending(b => b.Price).ToList();
                     else
-                        return BadRequest("OrderByPrice deve receber apenas os parâmetros \"asc\" ou \"desc\" ");
+                        return BadRequest("OrdenarPorPreco deve receber apenas os parâmetros \"asc\" ou \"desc\" ");
                 }
 
                 return Ok(books);
@@ -68,13 +69,15 @@ namespace BuscadorDeLivros.Controllers
             try
             {
                 var book = _bookRepository.BuscarPorId(bookId);
-                if (book == null) return NotFound("Livro não encontrado.");
+                if (book == null) 
+                    return NotFound("Livro não encontrado.");
 
                 var valorDoFrete = _freteService.CalcularFrete(book.Price);
-                return Ok(new { 
-                    bookId = book.Id, 
-                    bookPrice = book.Price, 
-                    bookShipping = valorDoFrete.ToString("c") 
+                return Ok(new Shipping
+                { 
+                    BookId = bookId,
+                    BookPrice = book.Price,
+                    ShippingValue = valorDoFrete
                 });
             }
             catch (Exception)

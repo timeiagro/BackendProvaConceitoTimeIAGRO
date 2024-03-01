@@ -1,7 +1,4 @@
-﻿using BuscadorDeLivros.Models;
-using BuscadorDeLivros.Repositories;
-
-namespace BuscadorDeLivros.Services
+﻿namespace BuscadorDeLivros.Services
 {
     public class FreteService : IFreteService
     {
