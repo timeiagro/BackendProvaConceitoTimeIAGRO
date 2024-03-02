@@ -16,10 +16,10 @@ namespace BuscadorDeLivros.Testes.Unidade.Repositories
         }
 
         [Test]
-        public void BuscarPorId_DeveRetornarBookCorrespondenteAoId() {
+        public async Task BuscarPorId_DeveRetornarBookCorrespondenteAoId() {
             var bookId = 1;
 
-            var resultado = _bookRepository.BuscarPorId(bookId);
+            var resultado = await _bookRepository.BuscarPorIdAsync(bookId);
 
             Assert.Multiple(() =>
             {
@@ -30,19 +30,19 @@ namespace BuscadorDeLivros.Testes.Unidade.Repositories
         }
 
         [Test]
-        public void BuscarPorId_DeveRetornarNulo_QuandoLivroNaoExistir()
+        public async Task BuscarPorId_DeveRetornarNulo_QuandoLivroNaoExistir()
         {
             var bookId = -1000;
 
-            var resultado = _bookRepository.BuscarPorId(bookId);
+            var resultado = await _bookRepository.BuscarPorIdAsync(bookId);
 
             Assert.That(resultado, Is.Null);
         }
 
         [Test]
-        public void BuscarTodos_DeveRetornarListaDeLivros()
+        public async Task BuscarTodos_DeveRetornarListaDeLivros()
         {
-            var resultado = _bookRepository.BuscarTodos();
+            var resultado = await _bookRepository.BuscarTodosAsync();
 
             Assert.Multiple(() =>
             {

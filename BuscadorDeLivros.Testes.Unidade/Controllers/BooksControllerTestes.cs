@@ -24,11 +24,11 @@ namespace BuscadorDeLivros.Testes.Unidade.Controllers
         }
 
         [Test]
-        public void Buscar_DeveRetornarOkEListaVazia_QuandoNaoExistirLivros()
+        public async Task Buscar_DeveRetornarOkEListaVazia_QuandoNaoExistirLivros()
         {
-            _booksRepositoryMock.Setup(m => m.BuscarTodos()).Returns(()=>null);
+            _booksRepositoryMock.Setup(m => m.BuscarTodosAsync()).ReturnsAsync(()=>null);
 
-            var resultado = _booksController.Buscar(null, null, null, null).Result as ObjectResult;
+            var resultado = (await _booksController.Buscar()).Result as ObjectResult;
 
             Assert.Multiple(() =>
             {
@@ -39,7 +39,7 @@ namespace BuscadorDeLivros.Testes.Unidade.Controllers
         }
 
         [Test]
-        public void Buscar_DeveRetornarOkETodosOsLivros_QuandoNaoExistirFiltro()
+        public async Task Buscar_DeveRetornarOkETodosOsLivros_QuandoNaoExistirFiltro()
         {
             var books = new List<Book>()
             {
@@ -47,9 +47,9 @@ namespace BuscadorDeLivros.Testes.Unidade.Controllers
                 new Book(){ Id = 2, Name = "Livro B", Price = 25.20m},
                 new Book(){ Id = 3, Name = "Livro C", Price = 12.60m},
             };
-            _booksRepositoryMock.Setup(m => m.BuscarTodos()).Returns(books);
+            _booksRepositoryMock.Setup(m => m.BuscarTodosAsync()).ReturnsAsync(books);
 
-            var resultado = _booksController.Buscar(null, null, null, null).Result as OkObjectResult;
+            var resultado = (await _booksController.Buscar()).Result as OkObjectResult;
 
             Assert.Multiple(() =>
             {
@@ -60,7 +60,7 @@ namespace BuscadorDeLivros.Testes.Unidade.Controllers
         }
 
         [Test]
-        public void Buscar_DeveRetornarOKELivrosFiltradosPorNome_QuandoOParametroNomeExistir()
+        public async Task Buscar_DeveRetornarOKELivrosFiltradosPorNome_QuandoOParametroNomeExistir()
         {
             var books = new List<Book>()
             {
@@ -68,9 +68,9 @@ namespace BuscadorDeLivros.Testes.Unidade.Controllers
                 new Book(){ Id = 2, Name = "Livro B", Price = 25.20m},
                 new Book(){ Id = 3, Name = "Livro C", Price = 12.60m},
             };
-            _booksRepositoryMock.Setup(m => m.BuscarTodos()).Returns(books);
+            _booksRepositoryMock.Setup(m => m.BuscarTodosAsync()).ReturnsAsync(books);
 
-            var resultado = _booksController.Buscar("Livro B", null, null, null)?.Result as OkObjectResult;
+            var resultado = (await _booksController.Buscar(nome: "Livro B")).Result as OkObjectResult;
 
             Assert.Multiple(() =>
             {
@@ -83,7 +83,7 @@ namespace BuscadorDeLivros.Testes.Unidade.Controllers
         }
 
         [Test]
-        public void Buscar_DeveRetornarOKELivrosFiltradosPorPreco_QuandoOParametroPrecoExistir()
+        public async Task Buscar_DeveRetornarOKELivrosFiltradosPorPreco_QuandoOParametroPrecoExistir()
         {
             var books = new List<Book>()
             {
@@ -91,9 +91,9 @@ namespace BuscadorDeLivros.Testes.Unidade.Controllers
                 new Book(){ Id = 2, Name = "Livro B", Price = 25.20m},
                 new Book(){ Id = 3, Name = "Livro C", Price = 12.60m},
             };
-            _booksRepositoryMock.Setup(m => m.BuscarTodos()).Returns(books);
+            _booksRepositoryMock.Setup(m => m.BuscarTodosAsync()).ReturnsAsync(books);
 
-            var resultado = _booksController.Buscar(null, 12.60m, null, null)?.Result as OkObjectResult;
+            var resultado = (await _booksController.Buscar(preco: 12.60m)).Result as OkObjectResult;
             var valor = resultado?.Value as List<Book>;
 
             Assert.Multiple(() =>
@@ -107,7 +107,7 @@ namespace BuscadorDeLivros.Testes.Unidade.Controllers
         }
 
         [Test]
-        public void Buscar_DeveRetornarOKELivrosFiltradosPorGenero_QuandoOParametroGeneroExistir()
+        public async Task Buscar_DeveRetornarOKELivrosFiltradosPorGenero_QuandoOParametroGeneroExistir()
         {
             var books = new List<Book>()
             {
@@ -115,9 +115,9 @@ namespace BuscadorDeLivros.Testes.Unidade.Controllers
                 new Book(){ Id = 2, Name = "Livro B", Price = 25.20m, Specifications = new BookSpecifications(){Genres = "Aventura"} },
                 new Book(){ Id = 3, Name = "Livro C", Price = 12.60m, Specifications = new BookSpecifications(){Genres = "Terror"} },
             };
-            _booksRepositoryMock.Setup(m => m.BuscarTodos()).Returns(books);
+            _booksRepositoryMock.Setup(m => m.BuscarTodosAsync()).ReturnsAsync(books);
 
-            var resultado = _booksController.Buscar(null, null, "Aventura", null)?.Result as OkObjectResult;
+            var resultado = (await _booksController.Buscar(genero: "Aventura")).Result as OkObjectResult;
             var valor = resultado?.Value as List<Book>;
 
             Assert.Multiple(() =>
@@ -131,7 +131,7 @@ namespace BuscadorDeLivros.Testes.Unidade.Controllers
         }
 
         [Test]
-        public void Buscar_DeveRetornarOKELivrosOrdenadosPorPrecoAsc_QuandoOParametroOrdenarPrecoAscExistir()
+        public async Task Buscar_DeveRetornarOKELivrosOrdenadosPorPrecoAsc_QuandoOParametroOrdenarPrecoAscExistir()
         {
             var books = new List<Book>()
             {
@@ -139,9 +139,9 @@ namespace BuscadorDeLivros.Testes.Unidade.Controllers
                 new Book(){ Id = 2, Name = "Livro B", Price = 25.20m, },
                 new Book(){ Id = 3, Name = "Livro C", Price = 12.60m, },
             };
-            _booksRepositoryMock.Setup(m => m.BuscarTodos()).Returns(books);
+            _booksRepositoryMock.Setup(m => m.BuscarTodosAsync()).ReturnsAsync(books);
 
-            var resultado = _booksController.Buscar(null, null, null, "asc")?.Result as OkObjectResult;
+            var resultado = (await _booksController.Buscar(ordenarPorPreco: "asc")).Result as OkObjectResult;
             var valor = resultado?.Value as List<Book>;
 
             Assert.Multiple(() =>
@@ -155,7 +155,7 @@ namespace BuscadorDeLivros.Testes.Unidade.Controllers
         }
 
         [Test]
-        public void Buscar_DeveRetornarOKELivrosOrdenadosPorPrecoDesc_QuandoOParametroOrdenarPrecoDescExistir()
+        public async Task Buscar_DeveRetornarOKELivrosOrdenadosPorPrecoDesc_QuandoOParametroOrdenarPrecoDescExistir()
         {
             var books = new List<Book>()
             {
@@ -163,9 +163,9 @@ namespace BuscadorDeLivros.Testes.Unidade.Controllers
                 new Book(){ Id = 2, Name = "Livro B", Price = 25.20m, },
                 new Book(){ Id = 3, Name = "Livro C", Price = 12.60m, },
             };
-            _booksRepositoryMock.Setup(m => m.BuscarTodos()).Returns(books);
+            _booksRepositoryMock.Setup(m => m.BuscarTodosAsync()).ReturnsAsync(books);
 
-            var resultado = _booksController.Buscar(null, null, null, "desc")?.Result as OkObjectResult;
+            var resultado = (await _booksController.Buscar(ordenarPorPreco: "desc")).Result as OkObjectResult;
             var valor = resultado?.Value as List<Book>;
 
             Assert.Multiple(() =>
@@ -179,7 +179,7 @@ namespace BuscadorDeLivros.Testes.Unidade.Controllers
         }
 
         [Test]
-        public void Buscar_DeveRetornarBadRequest_QuandoOParametroOrdenarPorPrecoForInvalido()
+        public async Task Buscar_DeveRetornarBadRequest_QuandoOParametroOrdenarPorPrecoForInvalido()
         {
             var books = new List<Book>()
             {
@@ -187,9 +187,9 @@ namespace BuscadorDeLivros.Testes.Unidade.Controllers
                 new Book(){ Id = 2, Name = "Livro B", Price = 25.20m, },
                 new Book(){ Id = 3, Name = "Livro C", Price = 12.60m, },
             };
-            _booksRepositoryMock.Setup(m => m.BuscarTodos()).Returns(books);
+            _booksRepositoryMock.Setup(m => m.BuscarTodosAsync()).ReturnsAsync(books);
 
-            var resultado = _booksController.Buscar(null, null, null, "ABC")?.Result as BadRequestObjectResult;
+            var resultado = (await _booksController.Buscar(ordenarPorPreco: "ABC")).Result as BadRequestObjectResult;
 
             Assert.Multiple(() =>
             {
@@ -200,11 +200,11 @@ namespace BuscadorDeLivros.Testes.Unidade.Controllers
         }
 
         [Test]
-        public void Buscar_DeveRetornarStatus500_DeveRetornarStatus500_QuanddoOcorrerErro()
+        public async Task Buscar_DeveRetornarStatus500_DeveRetornarStatus500_QuanddoOcorrerErro()
         {
-            _booksRepositoryMock.Setup(m => m.BuscarTodos()).Throws(new Exception());
+            _booksRepositoryMock.Setup(m => m.BuscarTodosAsync()).Throws(new Exception());
 
-            var resultado = _booksController.Buscar(null, null, null, null)?.Result as ObjectResult;
+            var resultado = (await _booksController.Buscar()).Result as ObjectResult;
 
             Assert.Multiple(() =>
             {
@@ -215,7 +215,7 @@ namespace BuscadorDeLivros.Testes.Unidade.Controllers
         }
 
         [Test]
-        public void CalcularFrete_DeveRetornarOkEValorDoFrete()
+        public async Task CalcularFrete_DeveRetornarOkEValorDoFrete()
         {
             var book = new Book
             {
@@ -226,10 +226,10 @@ namespace BuscadorDeLivros.Testes.Unidade.Controllers
             };
             var valorDoFrete = book.Price * (decimal)0.2;
 
-            _booksRepositoryMock.Setup(m => m.BuscarPorId(book.Id)).Returns(book);
+            _booksRepositoryMock.Setup(m => m.BuscarPorIdAsync(book.Id)).ReturnsAsync(book);
             _freteServiceMock.Setup(m => m.CalcularFrete(book.Price)).Returns(valorDoFrete);
 
-            var resultado = _booksController.CalcularFrete(book.Id).Result as OkObjectResult;
+            var resultado = (await _booksController.CalcularFrete(book.Id)).Result as OkObjectResult;
 
             Assert.Multiple(() =>
             {
@@ -239,12 +239,12 @@ namespace BuscadorDeLivros.Testes.Unidade.Controllers
         }
 
         [Test]
-        public void CalcularFrete_DeveRetornarNotFound_QuandoLivroNaoExistir()
+        public async Task CalcularFrete_DeveRetornarNotFound_QuandoLivroNaoExistir()
         {
             var bookId = -1999;
-            _booksRepositoryMock.Setup(m => m.BuscarPorId(bookId)).Returns(() => null);
+            _booksRepositoryMock.Setup(m => m.BuscarPorIdAsync(bookId)).ReturnsAsync(() => null);
 
-            var resultado = _booksController.CalcularFrete(bookId).Result;
+            var resultado = (await _booksController.CalcularFrete(bookId)).Result;
 
             Assert.Multiple(() =>
             {
@@ -254,12 +254,12 @@ namespace BuscadorDeLivros.Testes.Unidade.Controllers
         }
 
         [Test]
-        public void CalcularFrete_DeveRetornarStatus500_QuanddoOcorrerErro()
+        public async Task CalcularFrete_DeveRetornarStatus500_QuanddoOcorrerErro()
         {
             var bookId = 1;
-            _booksRepositoryMock.Setup(m => m.BuscarPorId(bookId)).Throws(new Exception());
+            _booksRepositoryMock.Setup(m => m.BuscarPorIdAsync(bookId)).Throws(new Exception());
 
-            var resultado = _booksController.CalcularFrete(bookId).Result;
+            var resultado = (await _booksController.CalcularFrete(bookId)).Result;
 
             Assert.Multiple(() =>
             {

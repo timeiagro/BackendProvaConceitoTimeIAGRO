@@ -14,12 +14,12 @@ namespace BuscadorDeLivros.Repository
             _booksFilePath = Path.Combine(directoryProject, "books.json");
         }
 
-        public List<Book>? BuscarTodos()
+        public async Task<List<Book>>? BuscarTodosAsync()
         {
             try
             {
                 using StreamReader reader = new StreamReader(_booksFilePath);
-                string jsonContent = reader.ReadToEnd();
+                string jsonContent = await reader.ReadToEndAsync();
                 var books = JsonConvert.DeserializeObject<List<Book>>(jsonContent);
                 return books;
             }
@@ -29,9 +29,9 @@ namespace BuscadorDeLivros.Repository
             }
         }
 
-        public Book? BuscarPorId(int id)
+        public async Task<Book>? BuscarPorIdAsync(int id)
         {
-            return BuscarTodos()?.FirstOrDefault(b=>b.Id == id);
+            return (await BuscarTodosAsync()).FirstOrDefault(b=>b.Id == id);
         }
     }
 }

@@ -19,15 +19,15 @@ namespace BuscadorDeLivros.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Book>> Buscar(
-            [FromQuery] string? nome,
-            [FromQuery] decimal? preco,
-            [FromQuery] string? genero,
-            [FromQuery] string? ordenarPorPreco)
+        public async Task<ActionResult<IEnumerable<Book>>> Buscar(
+            [FromQuery] string? nome = null,
+            [FromQuery] decimal? preco = null,
+            [FromQuery] string? genero = null,
+            [FromQuery] string? ordenarPorPreco = null)
         {
             try
             {
-                var books = _bookRepository.BuscarTodos();
+                var books = await _bookRepository.BuscarTodosAsync();
                 if (books is null) 
                     return Ok(new List<Book>());
 
@@ -65,11 +65,11 @@ namespace BuscadorDeLivros.Controllers
         } 
 
         [HttpGet("Frete/{bookId}")]
-        public ActionResult<Shipping> CalcularFrete(int bookId)
+        public async Task<ActionResult<Shipping>> CalcularFrete(int bookId)
         {
             try
             {
-                var book = _bookRepository.BuscarPorId(bookId);
+                var book = await _bookRepository.BuscarPorIdAsync(bookId);
                 if (book == null) 
                     return NotFound("Livro não encontrado.");
 
