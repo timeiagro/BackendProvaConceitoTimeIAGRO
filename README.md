@@ -18,12 +18,13 @@
 
 ## Como executar os testes
 
-1_ Abra a solução do projeto de testes
+1_ Abra a pasta do projeto de testes
 
     cd .\BackendProvaConceitoTimeIAGRO\BuscadorDeLivros.Testes.Unidade\
 
 2_ Build e execute os testes
 
+    dotnet build
     dotnet test
 
 <hr>
