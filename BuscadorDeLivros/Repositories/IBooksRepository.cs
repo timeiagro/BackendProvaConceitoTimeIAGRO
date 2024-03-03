@@ -4,7 +4,7 @@ namespace BuscadorDeLivros.Repositories
 {
     public interface IBooksRepository
     {
-        public Task<List<Book>>? BuscarTodosAsync();
-        public Task<Book>? BuscarPorIdAsync(int id);
+        public List<Book>? BuscarTodos();
+        public Book? BuscarPorId(int id);
     }
 }

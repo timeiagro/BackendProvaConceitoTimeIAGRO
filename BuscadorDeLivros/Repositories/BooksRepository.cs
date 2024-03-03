@@ -6,32 +6,39 @@ namespace BuscadorDeLivros.Repository
 {
     public class BooksRepository : IBooksRepository
     {
-        private readonly string _booksFilePath;
+        private IList<Book>? _books;
         
         public BooksRepository() {
-            var execututionDirectory = AppContext.BaseDirectory;
-            var directoryProject = Path.GetFullPath(Path.Combine(execututionDirectory, @"..\..\..\.."));
-            _booksFilePath = Path.Combine(directoryProject, "books.json");
+            _books = CarregarBooks();
         }
 
-        public async Task<List<Book>>? BuscarTodosAsync()
+        private IList<Book>? CarregarBooks()
         {
+            var fileName = "books.json";
+            var folderPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Data");
+            var filePath = Path.Combine(folderPath, fileName);
+
             try
             {
-                using StreamReader reader = new StreamReader(_booksFilePath);
-                string jsonContent = await reader.ReadToEndAsync();
-                var books = JsonConvert.DeserializeObject<List<Book>>(jsonContent);
-                return books;
+                using StreamReader reader = new(filePath);
+                string jsonContent = reader.ReadToEnd();
+                return _books = JsonConvert.DeserializeObject<List<Book>>(jsonContent);
             }
             catch (Exception ex)
             {
-                throw new Exception("Falha ao ler arquivo JSON de Books", ex); 
+                // log
+                return null;
             }
         }
 
-        public async Task<Book>? BuscarPorIdAsync(int id)
+        public List<Book>? BuscarTodos()
         {
-            return (await BuscarTodosAsync()).FirstOrDefault(b=>b.Id == id);
+            return _books?.ToList();
+        }
+
+        public Book? BuscarPorId(int id)
+        {
+            return _books?.FirstOrDefault(b=>b.Id == id);
         }
     }
 }
