@@ -1,3 +1,34 @@
+## Como executar o projeto
+
+###### Requisito: possuir o Microsoft .Net SDK 6.0
+
+1 - Clone o repositório e vá até a pasta do projeto
+    
+    git clone https://github.com/BrunoUmbelino/BackendProvaConceitoTimeIAGRO.git
+    cd .\BackendProvaConceitoTimeIAGRO\BuscadorDeLivros\
+    
+2 - Build e execute o projeto
+
+    dotnet build
+    dotnet run
+  
+3 - Abra o Swagger em seu navegador
+
+    https://localhost:7014/swagger/index.html
+
+## Como executar os testes
+
+1_ Abra a pasta do projeto de testes
+
+    cd .\BackendProvaConceitoTimeIAGRO\BuscadorDeLivros.Testes.Unidade\
+
+2_ Build e execute os testes
+
+    dotnet build
+    dotnet test
+
+<hr>
+
 Um cliente tem necessidade de buscar livros em um catálogo. Esse cliente quer ler e buscar esse catálogo de um arquivo JSON, e esse arquivo não pode ser modificado. Então com essa informação, é preciso desenvolver:
 
 - Criar uma API para buscar produtos no arquivo JSON disponibilizado.
