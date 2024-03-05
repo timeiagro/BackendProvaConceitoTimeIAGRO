@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace BookStoreWebApi.Utils
 {
-    public class ReadJson : IReadJson
+    public class BookRepository : IBookRepository
     {
         public List<Book> ReadBookList()
         {

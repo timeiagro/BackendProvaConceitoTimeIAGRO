@@ -6,22 +6,22 @@ namespace BookStoreWebApi.Services
 {
     public class BookService : IBookService
     {
-        private readonly IReadJson _readJson;
+        private readonly IBookRepository _bookRepository;
 
-        public BookService(IReadJson readJson)
+        public BookService(IBookRepository readJson)
         {
-            _readJson = readJson ?? throw new ArgumentNullException(nameof(readJson));
+            _bookRepository = readJson ?? throw new ArgumentNullException(nameof(readJson));
         }
 
         public List<Book> GetByName(string name)
         {
-            var booksList = _readJson.ReadBookList();
+            var booksList = _bookRepository.ReadBookList();
             return booksList.Where(x => x.Name?.ToLower().Contains(name?.ToLower()) == true).ToList();
         }
 
         public List<Book> ListBooks(bool? order)
         {
-            var booksList = _readJson.ReadBookList();
+            var booksList = _bookRepository.ReadBookList();
             return OrderBooks(booksList, order);
         }
 
@@ -32,13 +32,13 @@ namespace BookStoreWebApi.Services
 
         public List<Book> GetByAuthor(string author, bool? order)
         {
-            var booksList = _readJson.ReadBookList();
+            var booksList = _bookRepository.ReadBookList();
             return OrderBooks(booksList.Where(book => book.Specifications.Author?.ToLower().Contains(author?.ToLower()) == true).ToList(), order);
         }
 
         public List<Book> GetByGenre(string genre, bool? order)
         {
-            var booksList = _readJson.ReadBookList();
+            var booksList = _bookRepository.ReadBookList();
             var booksByGenre = CompareGenre(genre, booksList);
             return OrderBooks(booksByGenre, order);
         }
@@ -66,19 +66,19 @@ namespace BookStoreWebApi.Services
 
         public List<Book> GetByPrice(double price, bool? order)
         {
-            var booksList = _readJson.ReadBookList();
+            var booksList = _bookRepository.ReadBookList();
             return OrderBooks(booksList.Where(book => book.Price == price).ToList(), order);
         }
 
         public List<Book> GetByPageCount(int pageCount, bool? order)
         {
-            var booksList = _readJson.ReadBookList();
+            var booksList = _bookRepository.ReadBookList();
             return OrderBooks(booksList.Where(book => book.Specifications.Pagecount == pageCount).ToList(), order);
         }
 
         public List<Book> GetByIllustrator(string illustrator, bool? order)
         {
-            var booksList = _readJson.ReadBookList();
+            var booksList = _bookRepository.ReadBookList();
             var bookByIllustrator = CompareIllustrator(illustrator, booksList);
             return OrderBooks(bookByIllustrator, order);
         }
@@ -106,7 +106,7 @@ namespace BookStoreWebApi.Services
 
         public List<Book> GetByDate(string date, bool? order)
         {
-            var booksList = _readJson.ReadBookList();
+            var booksList = _bookRepository.ReadBookList();
             return OrderBooks(booksList.Where(book => book.Specifications.Originallypublished == date).ToList(), order);
         }
 

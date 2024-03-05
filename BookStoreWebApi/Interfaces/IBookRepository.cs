@@ -2,7 +2,7 @@
 
 namespace BookStoreWebApi.Interfaces
 {
-    public interface IReadJson
+    public interface IBookRepository
     {
         List<Book> ReadBookList();
     }

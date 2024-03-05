@@ -10,12 +10,12 @@ namespace BookStoreWebApi.IntegratedTest.ServiceTest
     public class BookServiceTest : BaseServiceTest
     {
         private readonly IBookService _bookService;
-        private readonly IReadJson _readJson;
+        private readonly IBookRepository _bookRepository;
 
         public BookServiceTest()
         {
-            _readJson = Substitute.For<IReadJson>();
-            _bookService = new BookService(_readJson);
+            _bookRepository = Substitute.For<IBookRepository>();
+            _bookService = new BookService(_bookRepository);
         }
 
         [Fact]
@@ -25,7 +25,7 @@ namespace BookStoreWebApi.IntegratedTest.ServiceTest
             var name = _fixture.Create<string>();
             var expectedResult = _fixture.CreateMany<Book>().ToList();
 
-            _readJson.ReadBookList().Returns(expectedResult);
+            _bookRepository.ReadBookList().Returns(expectedResult);
 
             // Act
             var result = _bookService.GetByName(name);
@@ -41,7 +41,7 @@ namespace BookStoreWebApi.IntegratedTest.ServiceTest
             var order = _fixture.Create<bool>();
             var expectedResult = _fixture.CreateMany<Book>().ToList();
 
-            _readJson.ReadBookList().Returns(expectedResult);
+            _bookRepository.ReadBookList().Returns(expectedResult);
 
             // Act
             var result = _bookService.ListBooks(order);
@@ -58,7 +58,7 @@ namespace BookStoreWebApi.IntegratedTest.ServiceTest
             var order = _fixture.Create<bool>();
             var expectedResult = _fixture.CreateMany<Book>().ToList();
 
-            _readJson.ReadBookList().Returns(expectedResult);
+            _bookRepository.ReadBookList().Returns(expectedResult);
 
             // Act
             var result = _bookService.GetByAuthor(author, order);
@@ -75,7 +75,7 @@ namespace BookStoreWebApi.IntegratedTest.ServiceTest
             var order = _fixture.Create<bool>();
             var expectedResult = _fixture.CreateMany<Book>().ToList();
 
-            _readJson.ReadBookList().Returns(expectedResult);
+            _bookRepository.ReadBookList().Returns(expectedResult);
 
             // Act
             var result = _bookService.GetByGenre(genre, order);
@@ -92,7 +92,7 @@ namespace BookStoreWebApi.IntegratedTest.ServiceTest
             var order = _fixture.Create<bool>();
             var expectedResult = _fixture.CreateMany<Book>().ToList();
 
-            _readJson.ReadBookList().Returns(expectedResult);
+            _bookRepository.ReadBookList().Returns(expectedResult);
 
             // Act
             var result = _bookService.GetByPrice(price, order);
@@ -109,7 +109,7 @@ namespace BookStoreWebApi.IntegratedTest.ServiceTest
             var order = _fixture.Create<bool>();
             var expectedResult = _fixture.CreateMany<Book>().ToList();
 
-            _readJson.ReadBookList().Returns(expectedResult);
+            _bookRepository.ReadBookList().Returns(expectedResult);
 
             // Act
             var result = _bookService.GetByPageCount(pageCount, order);
@@ -126,7 +126,7 @@ namespace BookStoreWebApi.IntegratedTest.ServiceTest
             var order = _fixture.Create<bool>();
             var expectedResult = _fixture.CreateMany<Book>().ToList();
 
-            _readJson.ReadBookList().Returns(expectedResult);
+            _bookRepository.ReadBookList().Returns(expectedResult);
 
             // Act
             var result = _bookService.GetByIllustrator(illustrator, order);
@@ -143,7 +143,7 @@ namespace BookStoreWebApi.IntegratedTest.ServiceTest
             var order = _fixture.Create<bool>();
             var expectedResult = _fixture.CreateMany<Book>().ToList();
 
-            _readJson.ReadBookList().Returns(expectedResult);
+            _bookRepository.ReadBookList().Returns(expectedResult);
 
             // Act
             var result = _bookService.GetByDate(date, order);
