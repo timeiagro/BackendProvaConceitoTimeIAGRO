@@ -1,5 +1,4 @@
-﻿
-using WebLivros.Models;
+﻿using WebLivros.Models;
 using WebLivros.Services;
 
 namespace WebLivroTest
@@ -14,9 +13,10 @@ namespace WebLivroTest
         {
             bookService = new BookService();
         }
+
         [Test]
         public void GetSize()
-        { 
+        {
             List<Book> books = bookService.GetBooks();
             Assert.AreEqual(5, books.Count);
         }
@@ -61,15 +61,14 @@ namespace WebLivroTest
 
             Assert.AreEqual(6.15, books[4].price);
             Assert.AreEqual(5, books[4].Id);
-
         }
 
         [Test]
         public void GetValueFrete()
         {
             Assert.AreEqual(12, bookService.GetValueFrete(1));
-            
-            Assert.AreEqual(12.12, bookService.GetValueFrete(2)); 
+
+            Assert.AreEqual(12.12, bookService.GetValueFrete(2));
 
             Assert.AreEqual(8.77, bookService.GetValueFrete(3));
 
@@ -78,13 +77,12 @@ namespace WebLivroTest
             Assert.AreEqual(7.38, bookService.GetValueFrete(5));
         }
 
-        [Test] 
+        [Test]
         public void GetByAuthor()
         {
             List<Book> result = bookService.GetByAuthor("Jules");
             Assert.IsNotNull(result);
             Assert.AreEqual(2, result.Count);
-           
         }
 
         [Test]
@@ -109,7 +107,6 @@ namespace WebLivroTest
             List<Book> result = bookService.GetByIllustrator("Riou");
             Assert.IsNotNull(result);
             Assert.AreEqual(2, result.Count);
-
         }
 
         [Test]
@@ -118,15 +115,14 @@ namespace WebLivroTest
             List<Book> result = bookService.GetByGenres("Fiction");
             Assert.IsNotNull(result);
             Assert.AreEqual(5, result.Count);
-
         }
+
         [Test]
         public void GetByGenre()
         {
             List<Book> result = bookService.GetByGenres("Science");
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.Count);
-
         }
     }
 }

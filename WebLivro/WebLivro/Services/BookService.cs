@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Xml.Linq;
 using WebLivros.Interfaces;
 using WebLivros.Models;
 

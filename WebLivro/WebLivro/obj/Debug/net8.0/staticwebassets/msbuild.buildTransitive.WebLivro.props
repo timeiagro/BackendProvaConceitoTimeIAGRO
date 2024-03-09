@@ -1,3 +1,3 @@
 ﻿<Project>
-  <Import Project="..\buildMultiTargeting\WebLivro.props" />
+  <Import Project="../buildMultiTargeting/WebLivro.props" />
 </Project>

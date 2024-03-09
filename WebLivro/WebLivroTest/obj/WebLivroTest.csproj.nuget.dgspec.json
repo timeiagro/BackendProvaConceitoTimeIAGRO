@@ -1,113 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\julia\\Documents\\miltec\\BackendProvaConceitoTimeIAGRO\\WebLivro\\WebLivroTest\\WebLivroTest.csproj": {}
+    "/home/juliano/Documentos/dotnet/BackendProvaConceitoTimeIAGRO/WebLivro/WebLivroTest/WebLivroTest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\julia\\Documents\\miltec\\BackendProvaConceitoTimeIAGRO\\WebLivro\\WebLivroTest\\WebLivroTest.csproj": {
+    "/home/juliano/Documentos/dotnet/BackendProvaConceitoTimeIAGRO/WebLivro/WebLivro/WebLivro.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\julia\\Documents\\miltec\\BackendProvaConceitoTimeIAGRO\\WebLivro\\WebLivroTest\\WebLivroTest.csproj",
-        "projectName": "WebLivroTest",
-        "projectPath": "C:\\Users\\julia\\Documents\\miltec\\BackendProvaConceitoTimeIAGRO\\WebLivro\\WebLivroTest\\WebLivroTest.csproj",
-        "packagesPath": "C:\\Users\\julia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\julia\\Documents\\miltec\\BackendProvaConceitoTimeIAGRO\\WebLivro\\WebLivroTest\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\julia\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net8.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
-            "projectReferences": {
-              "C:\\Users\\julia\\Documents\\miltec\\BackendProvaConceitoTimeIAGRO\\WebLivro\\WebLivro\\WebLivro.csproj": {
-                "projectPath": "C:\\Users\\julia\\Documents\\miltec\\BackendProvaConceitoTimeIAGRO\\WebLivro\\WebLivro\\WebLivro.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        }
-      },
-      "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
-          "dependencies": {
-            "Microsoft.NET.Test.Sdk": {
-              "target": "Package",
-              "version": "[17.8.0, )"
-            },
-            "NUnit": {
-              "target": "Package",
-              "version": "[3.14.0, )"
-            },
-            "NUnit.Analyzers": {
-              "target": "Package",
-              "version": "[3.9.0, )"
-            },
-            "NUnit3TestAdapter": {
-              "target": "Package",
-              "version": "[4.5.0, )"
-            },
-            "coverlet.collector": {
-              "target": "Package",
-              "version": "[6.0.0, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "C:\\Users\\julia\\Documents\\miltec\\BackendProvaConceitoTimeIAGRO\\WebLivro\\WebLivro\\WebLivro.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\julia\\Documents\\miltec\\BackendProvaConceitoTimeIAGRO\\WebLivro\\WebLivro\\WebLivro.csproj",
+        "projectUniqueName": "/home/juliano/Documentos/dotnet/BackendProvaConceitoTimeIAGRO/WebLivro/WebLivro/WebLivro.csproj",
         "projectName": "WebLivro",
-        "projectPath": "C:\\Users\\julia\\Documents\\miltec\\BackendProvaConceitoTimeIAGRO\\WebLivro\\WebLivro\\WebLivro.csproj",
-        "packagesPath": "C:\\Users\\julia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\julia\\Documents\\miltec\\BackendProvaConceitoTimeIAGRO\\WebLivro\\WebLivro\\obj\\",
+        "projectPath": "/home/juliano/Documentos/dotnet/BackendProvaConceitoTimeIAGRO/WebLivro/WebLivro/WebLivro.csproj",
+        "packagesPath": "/home/juliano/.nuget/packages/",
+        "outputPath": "/home/juliano/Documentos/dotnet/BackendProvaConceitoTimeIAGRO/WebLivro/WebLivro/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\julia\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/juliano/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -120,11 +32,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -159,7 +66,90 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.102/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/juliano/Documentos/dotnet/BackendProvaConceitoTimeIAGRO/WebLivro/WebLivroTest/WebLivroTest.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/juliano/Documentos/dotnet/BackendProvaConceitoTimeIAGRO/WebLivro/WebLivroTest/WebLivroTest.csproj",
+        "projectName": "WebLivroTest",
+        "projectPath": "/home/juliano/Documentos/dotnet/BackendProvaConceitoTimeIAGRO/WebLivro/WebLivroTest/WebLivroTest.csproj",
+        "packagesPath": "/home/juliano/.nuget/packages/",
+        "outputPath": "/home/juliano/Documentos/dotnet/BackendProvaConceitoTimeIAGRO/WebLivro/WebLivroTest/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/juliano/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/home/juliano/Documentos/dotnet/BackendProvaConceitoTimeIAGRO/WebLivro/WebLivro/WebLivro.csproj": {
+                "projectPath": "/home/juliano/Documentos/dotnet/BackendProvaConceitoTimeIAGRO/WebLivro/WebLivro/WebLivro.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.8.0, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.20.70, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.14.0, )"
+            },
+            "NUnit.Analyzers": {
+              "target": "Package",
+              "version": "[3.9.0, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

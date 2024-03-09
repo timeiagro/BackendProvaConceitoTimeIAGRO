@@ -1,3 +1,4 @@
+using WebLivro.repository;
 using WebLivros.Interfaces;
 using WebLivros.Services;
 
@@ -10,7 +11,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IBookService, BookService>();
-
+builder.Services.AddTransient<IBookModelService, BookModelService>();
+builder.Services.AddScoped<IBookModelRepository, BookModelRepository>();
+builder.Services.AddHttpClient<BookModelRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
