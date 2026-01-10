@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="src/DesafioMiltec/DesafioMiltec.csproj" />
+  <Project Path="tests/DesafioMiltec.Tests/DesafioMiltec.Tests.csproj" />
+</Solution>

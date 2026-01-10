@@ -1,0 +1,6 @@
+@DesafioMiltec_HostAddress = http://localhost:5089
+
+GET {{DesafioMiltec_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
