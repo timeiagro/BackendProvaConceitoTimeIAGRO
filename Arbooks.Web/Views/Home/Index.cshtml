@@ -1,0 +1,67 @@
+﻿@model BookDTO
+
+@{
+    ViewData["Title"] = "Catalog";
+}
+
+<div>
+    <div class="titleHome">
+        <span>Arbooks</span>
+        <img src="~/images/icon-gif-arbooks.gif" alt="Ícone Arbooks" class="icon" />
+    </div>
+
+    <div class="search">
+        <form asp-action="Index" method="get">
+            <input type="text"
+                   name="search"
+                   placeholder="What are you looking for?"
+                   value="@ViewData["search"]" />
+
+            <button class="button" type="submit">Search</button>
+        </form>
+    </div>
+
+    <div class="sort">
+        <form asp-action="Index" method="get">
+            <input type="hidden"
+                   name="search"
+                   value="@ViewData["search"]" />
+
+            <select class="sort" name="order" onchange="this.form.submit()">
+                <option value="">Sort by</option>
+                <option value="priceAsc"
+                        selected="@(ViewData["order"]?.ToString() == "priceAsc")">
+                    Price ↑ (Ascending)
+                </option>
+                <option value="priceDesc"
+                        selected="@(ViewData["order"]?.ToString() == "priceDesc")">
+                    Price ↓ (Descending)
+                </option>
+            </select>
+        </form>
+    </div>
+
+    <table class="bookList">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Author</th>
+        </tr>
+        @foreach (var item in (List<BookDTO>)ViewData["bookList"])
+        {
+            <tr>
+                <td>@item.id</td>
+                <td>@item.name.ToString()</td>
+                <td>@item.price.ToString("C")</td>
+                <td>@item.specifications.author.ToString()</td>
+                <td>
+                    <a asp-action="BookDetails"
+                       asp-route-id="@item.id">
+                        Details
+                    </a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

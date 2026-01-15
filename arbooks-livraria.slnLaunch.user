@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Novo Perfil",
+    "Projects": [
+      {
+        "Path": "Arbooks.API\\Arbooks.API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Arbooks.Web\\Arbooks.Web.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

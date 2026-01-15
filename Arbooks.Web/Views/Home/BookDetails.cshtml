@@ -1,0 +1,29 @@
+﻿@using Arbooks.Web.DTOs
+@model BookDTO
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="details">
+    <h3>@Model.name</h3>
+
+    <p><strong>Author:</strong> @Model.specifications.author</p>
+    <p><strong>Originally Published:</strong> @Model.specifications.originallyPublished</p>
+    <p><strong>Page Count:</strong> @Model.specifications.pageCount</p>
+    <p><strong>Illustrators:</strong> @Model.specifications.illustrator</p>
+    <p><strong>Genres:</strong> @Model.specifications.genres</p>
+
+    <p><strong>Price:</strong> @Model.price.ToString("C")</p>
+
+    <form asp-controller="Home" asp-action="CalculateShipping" asp-route-id="@Model.id" method="post">
+        <button type="submit">Calculate Shipping</button>
+    </form>
+
+    @if (ViewData["ShippingValue"] != null)
+    {
+        <p><strong>Shipping:</strong> @(string.Format("{0:C}", (decimal)ViewData["ShippingValue"]!))</p>
+    }
+
+    <a href="/" type="button">Back</a>
+</div>
